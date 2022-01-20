@@ -54,3 +54,6 @@ Route::get('/list-yard',[YardController::class,'list']);
 // booking
 Route::get('/booking-list',[BookingController::class,'list']);
 Route::get('/booking-details',[BookingController::class,'details']);
+
+
+// staff
