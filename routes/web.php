@@ -3,6 +3,9 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\YardController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BookingController;
+
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 // layout Front end + Back end + demo
 Route::get('/layout',[LayoutController::class,'layout']);
 Route::get('/demo',[LayoutController::class,'demo']);
+Route::get('/layout_admin',[LayoutController::class,'admin']);
+
 
 // Front End
 
@@ -29,4 +34,23 @@ Route::post('/tim-kiem',[HomeController::class,'search']);
 Route::get('/yard',[YardController::class,'index']);
 Route::get('/yard-details',[YardController::class,'details']);
 
+//Backend
+Route::get('/admin',[AdminController::class,'index']);
+Route::get('/reset',[AdminController::class,'reset']);
+Route::get('/dashboard',[AdminController::class,'show_dashboard']);
+Route::get('/logout',[AdminController::class,'logout']);
+Route::post('/admin-dashboard',[AdminController::class,'dashboard']);
 
+
+Route::get('/dashboard/profile',[AdminController::class,'profile']);
+Route::get('/dashboard/profile/edit',[AdminController::class,'edit']);
+
+// yard
+Route::get('/add-yard',[YardController::class,'add_yard']);
+Route::get('/edit-yard',[YardController::class,'edit']);
+Route::get('/delete-yard/{category_product_id}',[YardController::class,'index']);
+Route::get('/list-yard',[YardController::class,'list']);
+
+// booking
+Route::get('/booking-list',[BookingController::class,'list']);
+Route::get('/booking-details',[BookingController::class,'details']);
