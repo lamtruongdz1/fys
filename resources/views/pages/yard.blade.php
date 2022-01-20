@@ -1,4 +1,4 @@
-@extends('../layout.blade.php')
+@extends('../layout')
 @yield('content')
  <!-- yard section start -->
  <section class="yard" id="yard">

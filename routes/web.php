@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LayoutController;
+use App\Http\Controllers\YardController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,7 @@ Route::get('/trangchu',[HomeController::class,'index']);
 Route::get('/404',[HomeController::class,'link404']);
 Route::post('/tim-kiem',[HomeController::class,'search']);
 // yard
-Route::get('/',[Controller::class,'index']);
-
+Route::get('/yard',[YardController::class,'index']);
+Route::get('/yard-details',[YardController::class,'details']);
 
 
