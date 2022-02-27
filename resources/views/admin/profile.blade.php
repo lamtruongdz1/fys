@@ -1,5 +1,4 @@
-@extends('../layoutadmin')
-@section('main-content')
+<x-admin-app-layout title="Trang cá nhân">
 <div class="container-fluid px-2 px-md-4">
     <section class="vh-100" style="background-color: #f4f5f7;">
         <div class="container py-5 h-100">
@@ -58,4 +57,4 @@
         </div>
       </section>
   </div>
-@endsection
+</x-admin-app-layout>

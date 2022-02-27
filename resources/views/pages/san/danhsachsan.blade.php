@@ -1,6 +1,4 @@
-@section('title','Danh sách sân')
-@extends('../layout')
-@yield('content')
+<x-app-layout title="Danh sách tất cả sân">
  <!-- yard section start -->
  <section class="yard" id="yard">
     <div class="heading">
@@ -112,4 +110,4 @@
     </div>
   </div>
 </section>
-<!-- yard section end -->
+</x-app-layout>

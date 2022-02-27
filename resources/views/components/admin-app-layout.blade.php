@@ -7,7 +7,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('backend/img/apple-icon.png') }} ">
   <link rel="icon" type="image/png" href="{{ asset('backend/img/favicon.png') }} ">
   <title>
-    Dashboard || Find Yard Sport
+    @isset($title){{ $title }}@endisset - Dashboard
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -242,7 +242,7 @@
       </div>
     </nav>
     <!-- End Navbar -->
-    @yield('main-content')
+    {{ $slot }}
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
       <i class="material-icons py-2">settings</i>

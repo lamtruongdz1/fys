@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        return view('pages.home');
+        return view('pages.san.trangchu');
     }
     public function link404(){
         return view('errors.404');

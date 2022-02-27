@@ -1,7 +1,6 @@
-@extends('../layout')
-@section('content')
+<x-app-layout title="Thông tin chi tiết">
      <div class="yard-detail-image">
-        <img src="images/bg1.jpg" alt="">
+        <img src="{{asset ('frontend/images/bg1.jpg')}}" alt="">
     </div>
    <section class="yard-detail">
     <div class="yard-detail-heading">
@@ -45,13 +44,13 @@
         <h1>Hình ảnh sân bóng</h1>
         <div class="yard-detail-list">
             <div class="yard-detail-item">
-                <img src="images/footballarena1.jpg" alt="">
+                <img src="{{asset ('frontend/images/footballarena1.jpg')}}" alt="">
             </div>
             <div class="yard-detail-item">
-                <img src="images/footballarena.jpg" alt="">
+                <img src="{{asset ('frontend/images/footballarena.jpg')}}" alt="">
             </div>
             <div class="yard-detail-item">
-                <img src="images/footballarena2.jpg" alt="">
+                <img src="{{asset ('frontend/images/footballarena2.jpg')}}" alt="">
             </div>
         </div>
     </div>
@@ -91,7 +90,7 @@
         <div class="swiper-slide">
           <div class="yard-detail-item">
             <div class="yard-detail-image">
-              <img src="images/chaolua.jpg" alt="">
+              <img src="{{asset ('frontend/images/chaolua.jpg')}}" alt="">
             </div>        
             <div class="yard-detail-text">  
               <div class="yard-detail-type">
@@ -110,7 +109,7 @@
         <div class="swiper-slide">
           <div class="yard-detail-item">
             <div class="yard-detail-image">
-              <img src="images/chaolua.jpg" alt="">
+              <img src="{{asset ('frontend/images/chaolua.jpg')}}" alt="">
             </div>        
             <div class="yard-detail-text">
               <div class="yard-detail-type">
@@ -129,7 +128,7 @@
         <div class="swiper-slide">
           <div class="yard-detail-item">
             <div class="yard-detail-image">
-              <img src="images/chaolua.jpg" alt="">
+              <img src="{{asset ('frontend/images/chaolua.jpg')}}" alt="">
             </div>        
             <div class="yard-detail-text">
               <div class="yard-detail-type">
@@ -148,7 +147,7 @@
         <div class="swiper-slide">
           <div class="yard-detail-item">
             <div class="yard-detail-image">
-              <img src="images/chaolua.jpg" alt="">
+              <img src="{{asset ('frontend/images/chaolua.jpg')}}" alt="">
             </div>        
             <div class="yard-detail-text">
               <div class="yard-detail-type">
@@ -167,7 +166,7 @@
         <div class="swiper-slide">
           <div class="yard-detail-item">
             <div class="yard-detail-image">
-              <img src="images/chaolua.jpg" alt="">
+              <img src="{{asset ('frontend/images/chaolua.jpg')}}" alt="">
             </div>        
             <div class="yard-detail-text">
               <div class="yard-detail-type">
@@ -189,4 +188,4 @@
       <div class="swiper-pagination"></div>
     </div>
    </section>   
-@endsection
+  </x-app-layout>

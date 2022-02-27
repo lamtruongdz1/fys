@@ -1,5 +1,4 @@
-@extends('../../layoutadmin')
-@section('main-content')
+<x-admin-app-layout title="Danh sách tất cả sân">
 <div class="container-fluid py-4">
     <div class="row">
       <div class="col-12">
@@ -68,4 +67,5 @@
         </div>
       </div>
     </div>
-@endsection
+</div>
+</x-admin-app-layout>

@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> @yield('title') - Find Yard Sport </title>
+    <title> @isset($title){{ $title }}@endisset  - Find Yard Sport 
+    </title>
     <!-- css -->
     <link rel="stylesheet" href="{{ URL::asset('frontend/css/style.css')}}" />
     <!-- fonts -->
@@ -32,25 +33,24 @@
     <header class="header" id="header">
       <div class="navbar">
         <div class="logo">
-          <a href=""><img src="{{asset ('frontend/images/logo.png')}}" alt="" /></a>
+          <a href="/"><img src="{{asset ('frontend/images/logo.png')}}" alt="" /></a>
         </div>
         <ul class="menu">
           <li><a href="/">trang chủ</a></li>
-          <li><a href="/yard">Đặt sân</a></li>
+          <li><a href="/san">Đặt sân</a></li>
           <li><a href="">Sân hot</a></li>
           <li><a href="">Dịch vụ</a></li>
           <li><a href="">Liên hệ</a></li>
         </ul>
         <div class="login">
-          <a href="login.html">đăng nhập</a>
-          <a href="register.html">đăng ký</a>
+          <a href="/login">đăng nhập</a>
+          <a href="/register">đăng ký</a>
         </div>
         <div id="menuBar" class="icons bx bx-menu"></div>
       </div>
     </header>
     <!-- header end -->
-@section('main-content')
-@yield('content')
+{{ $slot }}
 
 
     <!-- section start -->

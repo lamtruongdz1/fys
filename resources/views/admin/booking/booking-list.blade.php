@@ -1,5 +1,4 @@
-@extends('../../layoutadmin')
-@section('main-content')
+<x-admin-app-layout title="Danh sách đặt chỗ">
 <div class="container-fluid py-4">
     <div class="d-sm-flex justify-content-between">
       <div>

@@ -1,5 +1,4 @@
-@extends('../layoutadmin')
-@section('main-content')
+<x-admin-app-layout title="Sửa thông tin sân">
 <div class="container">
     <div class="row gutters">
     <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
@@ -96,4 +95,4 @@
     </div>
     </div>
     <link rel="stylesheet" href="{{ asset('backend/css/edit.css') }}">
-@endsection
+</x-admin-app-layout>

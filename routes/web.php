@@ -17,10 +17,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// layout Front end + Back end + demo
-Route::get('/layout',[LayoutController::class,'layout']);
-Route::get('/demo',[LayoutController::class,'demo']);
-Route::get('/layout_admin',[LayoutController::class,'admin']);
+// layout Front end + Back end 
+//* Route::get('/layout',[LayoutController::class,'layout']);
+//* Route::get('/layout_admin',[LayoutController::class,'admin']);
 
 
 // Front End
@@ -31,8 +30,8 @@ Route::get('/trangchu',[HomeController::class,'index']);
 Route::get('/404',[HomeController::class,'link404']);
 Route::post('/tim-kiem',[HomeController::class,'search']);
 // yard
-Route::get('/yard',[YardController::class,'index']);
-Route::get('/yard-details',[YardController::class,'details']);
+Route::get('/san',[YardController::class,'index']);
+Route::get('/thongtinsan',[YardController::class,'details']);
 
 //Backend
 Route::get('/admin',[AdminController::class,'index']);
