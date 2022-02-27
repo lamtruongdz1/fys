@@ -1,3 +1,4 @@
+@section('title','Danh sách sân')
 @extends('../layout')
 @yield('content')
  <!-- yard section start -->
@@ -9,7 +10,7 @@
   <div class="yard-list">
     <div class="yard-item">
       <div class="yard-image">
-        <img src="images/chaolua.jpg" alt="" class="yard-img">
+        <img src="{{asset ('frontend/images/chaolua.jpg')}}" alt="" class="yard-img">
       </div>
       <div class="yard-text">
         <div class="yard-type">
@@ -26,7 +27,7 @@
     </div>
     <div class="yard-item">
       <div class="yard-image">
-        <img src="images/sportplus.png" alt="" class="yard-img">
+        <img src="{{asset ('frontend/images/sportplus.png')}}" alt="" class="yard-img">
       </div>
       <div class="yard-text">
         <div class="yard-type">
@@ -43,7 +44,7 @@
     </div>
     <div class="yard-item">
       <div class="yard-image">
-        <img src="images/celadon.png" alt="" class="yard-img">
+        <img src="{{asset ('frontend/images/celadon.png')}}" alt="" class="yard-img">
       </div>
       <div class="yard-text">
         <div class="yard-type">
@@ -60,7 +61,7 @@
     </div>
     <div class="yard-item">
       <div class="yard-image">
-        <img src="images/d36hht.png" alt="" class="yard-img">
+        <img src="{{asset ('frontend/images/d36hht.png')}}" alt="" class="yard-img">
       </div>
       <div class="yard-text">
         <div class="yard-type">
@@ -77,7 +78,7 @@
     </div>
     <div class="yard-item">
       <div class="yard-image">
-        <img src="images/footballarena.jpg" alt="" class="yard-img">
+        <img src="{{asset ('frontend/images/footballarena.jpg')}}" alt="" class="yard-img">
       </div>
       <div class="yard-text">
         <div class="yard-type">
@@ -94,7 +95,7 @@
     </div>
     <div class="yard-item">
       <div class="yard-image">
-        <img src="images/santhoihoa.jpg" alt="" class="yard-img">
+        <img src="{{asset ('frontend/images/santhoihoa.jpg')}}" alt="" class="yard-img">
       </div>
       <div class="yard-text">
         <div class="yard-type">

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> Find Yard Sport | @yield('title')</title>
+    <title> @yield('title') - Find Yard Sport </title>
     <!-- css -->
     <link rel="stylesheet" href="{{ URL::asset('frontend/css/style.css')}}" />
     <!-- fonts -->
@@ -36,7 +36,7 @@
         </div>
         <ul class="menu">
           <li><a href="/">trang chủ</a></li>
-          <li><a href="yard.html">Đặt sân</a></li>
+          <li><a href="/yard">Đặt sân</a></li>
           <li><a href="">Sân hot</a></li>
           <li><a href="">Dịch vụ</a></li>
           <li><a href="">Liên hệ</a></li>

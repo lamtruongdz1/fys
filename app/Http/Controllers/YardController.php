@@ -9,6 +9,9 @@ class YardController extends Controller
     public function index(){
         return view('pages.yard');
     }
+    public function edit(){
+        return view('admin.yard.edit');
+    }
     public function details(){
         return view('pages.yard-detail');
     }

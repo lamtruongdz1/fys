@@ -36,7 +36,7 @@
         </div>
         <ul class="menu">
           <li><a href="/">trang chủ</a></li>
-          <li><a href="yard.html">Đặt sân</a></li>
+          <li><a href="/yard">Đặt sân</a></li>
           <li><a href="">Sân hot</a></li>
           <li><a href="">Dịch vụ</a></li>
           <li><a href="">Liên hệ</a></li>
@@ -100,7 +100,7 @@
               />
             </div>
             <div class="input-btn">
-              <a href="yard.html"><input type="submit" class="btn" value="tìm kiếm" /></a>
+              <a href="yard"><input type="submit" class="btn" value="tìm kiếm" /></a>
             </div>
           </div>
         </div>
@@ -234,7 +234,7 @@
           </div>
           <div class="swiper-slide">
             <div class="yard-hot-item">
-              <a href="yard-detail.html">
+              <a href="yard-detail">
               <div class="yard-hot-image">
                 <img src="{{asset ('frontend/images/f.jpg')}}" alt="" class="yard-img">
               </div>
