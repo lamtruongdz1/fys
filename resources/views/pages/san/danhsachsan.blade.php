@@ -1,4 +1,4 @@
-<x-app-layout title="Danh sách tất cả sân">
+<x-client-layout title="Danh sách tất cả sân">
  <!-- yard section start -->
  <section class="yard" id="yard">
     <div class="heading">
@@ -110,4 +110,4 @@
     </div>
   </div>
 </section>
-</x-app-layout>
+</x-client-layout>

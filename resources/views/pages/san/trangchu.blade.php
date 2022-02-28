@@ -1,4 +1,4 @@
-<x-app-layout title="Trang chủ">
+<x-client-layout title="Trang chủ">
   <section class="booking-bar">
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
@@ -477,4 +477,4 @@
       </div>
       <a href="" class="btn">xem thêm</a>
     </section>
-</x-app-layout>
+</x-client-layout>

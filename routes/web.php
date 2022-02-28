@@ -17,10 +17,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// layout Front end + Back end 
-//* Route::get('/layout',[LayoutController::class,'layout']);
-//* Route::get('/layout_admin',[LayoutController::class,'admin']);
-
 
 // Front End
 
@@ -33,26 +29,3 @@ Route::post('/tim-kiem',[HomeController::class,'search']);
 Route::get('/san',[YardController::class,'index']);
 Route::get('/thongtinsan',[YardController::class,'details']);
 
-//Backend
-Route::get('/admin',[AdminController::class,'index']);
-Route::get('/reset',[AdminController::class,'reset']);
-Route::get('/dashboard',[AdminController::class,'show_dashboard']);
-Route::get('/logout',[AdminController::class,'logout']);
-Route::post('/admin-dashboard',[AdminController::class,'dashboard']);
-
-
-Route::get('/dashboard/profile',[AdminController::class,'profile']);
-Route::get('/dashboard/profile/edit',[AdminController::class,'edit']);
-
-// yard
-Route::get('/add-yard',[YardController::class,'add_yard']);
-Route::get('/edit-yard',[YardController::class,'edit']);
-Route::get('/delete-yard/{category_product_id}',[YardController::class,'index']);
-Route::get('/list-yard',[YardController::class,'list']);
-
-// booking
-Route::get('/booking-list',[BookingController::class,'list']);
-Route::get('/booking-details',[BookingController::class,'details']);
-
-
-// staff

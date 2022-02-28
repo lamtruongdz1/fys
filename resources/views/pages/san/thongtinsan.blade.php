@@ -1,4 +1,4 @@
-<x-app-layout title="Thông tin chi tiết">
+<x-client-layout title="Thông tin chi tiết">
      <div class="yard-detail-image">
         <img src="{{asset ('frontend/images/bg1.jpg')}}" alt="">
     </div>
@@ -188,4 +188,4 @@
       <div class="swiper-pagination"></div>
     </div>
    </section>   
-  </x-app-layout>
+  </x-client-layout>
