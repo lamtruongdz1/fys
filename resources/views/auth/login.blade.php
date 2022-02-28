@@ -43,7 +43,21 @@
                     {{ __('Đăng nhập') }}
                 </x-jet-button>
             </div>
-            <button class="uppercase h-12 mt-3 text-white w-full rounded bg-blue-800 hover:bg-blue-900"><i class="fa fa-facebook mr-2"></i>Facebook</button> <button class="uppercase h-12 mt-3 text-white w-full rounded bg-red-800 hover:bg-red-900"><i class="fa fa-google mr-2"></i>Google</button>
+            <div class="flex justify-between items-center mt-3">
+                <hr class="w-full"> <span class="p-2 text-gray-400 mb-1">OR</span>
+                <hr class="w-full">
+            </div>
+            <!-- Login with social -->
+            <button class="uppercase h-12 mt-3 text-white w-full rounded bg-blue-800 hover:bg-blue-900">
+                <i class="fa fa-facebook mr-2"></i>Facebook
+            </button> 
+            <button class="uppercase h-12 mt-3 text-white w-full rounded bg-red-800 hover:bg-red-900">
+                <i class="fa fa-google mr-2"></i>Google
+            </button>
+            <button class="uppercase h-12 mt-3 text-white w-full rounded bg-black hover:bg-black">
+                <i class="fa fa-github mr-2"></i>Github
+            </button>
+            <!-- end login with social -->
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>
