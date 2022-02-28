@@ -29,3 +29,8 @@ Route::post('/tim-kiem',[HomeController::class,'search']);
 Route::get('/san',[YardController::class,'index']);
 Route::get('/thongtinsan',[YardController::class,'details']);
 
+Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
+
+
+
+

@@ -11,6 +11,7 @@ use App\Actions\Jetstream\RemoveTeamMember;
 use App\Actions\Jetstream\UpdateTeamName;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Jetstream\Jetstream;
+use Laravel\Fortify\Fortify;
 
 class JetstreamServiceProvider extends ServiceProvider
 {
@@ -31,6 +32,10 @@ class JetstreamServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Fortify::registerView(function () {
+            return view('auth.register');
+        });
+        
         $this->configurePermissions();
 
         Jetstream::createTeamsUsing(CreateTeam::class);

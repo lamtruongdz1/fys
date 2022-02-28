@@ -21,5 +21,8 @@ class HomeController extends Controller
     public function search(Request $request){
         //
     }
+    public function dashboard(){
+        return view('dashboard');
+    }
 
 }

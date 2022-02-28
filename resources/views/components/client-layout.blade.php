@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> @isset($title){{ $title }} @endisset Find Yard Sport </title>
+    <title> @isset($title){{ $title }} @endisset - Find Yard Sport </title>
     <!-- css -->
     <link rel="stylesheet" href="{{ URL::asset('frontend/css/style.css')}}" />
     <!-- fonts -->
@@ -41,10 +41,28 @@
           <li><a href="">Dịch vụ</a></li>
           <li><a href="">Liên hệ</a></li>
         </ul>
+        @auth
+        <div class="login">
+          <!-- Account Management -->
+          <a href="{{ route('profile.show') }}">{{ Auth::user()->name }}</a>  
+        <!-- Authentication -->
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                {{ __('Đăng Xuất') }}
+            </a>
+        </form>
+        </div>
+        @endauth
+        @guest
         <div class="login">
           <a href="/login">đăng nhập</a>
           <a href="/register">đăng ký</a>
-        </div>
+        </div>  
+        @endguest
+  
         <div id="menuBar" class="icons bx bx-menu"></div>
       </div>
     </header>
