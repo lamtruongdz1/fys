@@ -5,6 +5,7 @@ use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\YardController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookingController;
+use Laravel\Socialite\Facades\Socialite;
 
 use Illuminate\Support\Facades\Route;
 /*
@@ -33,4 +34,19 @@ Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
 
 Route::get('/demo',[HomeController::class,'dashboard'])->name('demo');
 
+
+// login with social
+
+
+// Google login
+Route::get('login/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
+
+// Facebook login
+Route::get('login/facebook', [App\Http\Controllers\Auth\LoginController::class, 'redirectToFacebook'])->name('login.facebook');
+Route::get('login/facebook/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleFacebookCallback']);
+
+// Github login
+Route::get('login/github', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGithub'])->name('login.github');
+Route::get('login/github/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGithubCallback']);
 
