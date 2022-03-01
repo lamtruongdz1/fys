@@ -31,6 +31,6 @@ Route::get('/thongtinsan',[YardController::class,'details']);
 
 Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
 
-
+Route::get('/demo',[HomeController::class,'dashboard'])->name('demo');
 
 
