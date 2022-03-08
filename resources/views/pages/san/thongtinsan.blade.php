@@ -4,17 +4,17 @@
     </div>
    <section class="yard-detail">
     <div class="yard-detail-heading">
-        <h2>Sân Football Arena</h2>
-        <p><i class='bx bx-map' ></i>3A Phan Chu Trinh, P.12, Quận Bình Thạnh, Hồ Chí Minh</p>
+        <h2>{{ $yard->name }}</h2>
+        <p><i class='bx bx-map' ></i>{{ $yard->address }}</p>
     </div>
     <div class="yard-detail-content">
       <div class="yard-detail-left">
         <h1>Thông tin sân bóng</h1>
         <div class="yard-detail-title">
-            <h2>Sân Football Arena</h2>
+            <h2>{{ $yard->name }}</h2>
         </div>
         <div class="yard-detail-location">
-            <i class='bx bx-map' ></i><p>3A Phan Chu Trinh, P.12, Quận Bình Thạnh, Hồ Chí Minh</p>
+            <i class='bx bx-map' ></i><p>{{ $yard->address }}</p>
         </div>
         <div class="yard-detail-type">
             <i class='bx bx-football' ></i><p>Sân 5 - Sân 7 - sân 11</p>

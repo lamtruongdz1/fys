@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Yard;
 class HomeController extends Controller
 {
     public function index(){
-        return view('pages.san.trangchu');
+        $yard = Yard::orderBy('view','DESC')->limit(5)->get() ; 
+        return view('pages.san.trangchu',compact('yard'));
     }
     public function link404(){
         return view('errors.404');

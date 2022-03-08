@@ -157,24 +157,27 @@
     </div>
   </div>
   <div class="yard-list">
+    @foreach ($yard as $show)
+      
     <div class="yard-item">
       <div class="yard-image">
-        <img src="{{asset ('frontend/images/chaolua.jpg')}}" alt="" class="yard-img">
+        <img src="{{$show->img}}" alt="" class="yard-img">
       </div>
       <div class="yard-text">
         <div class="yard-type">
           <span>Sân 5 - sân 7</span>
         </div>
         <div class="yard-price">
-          <p>250.000 VND/giờ</p>
+          <p>{{$show->price}}.000 VND/giờ</p>
         </div>
       </div>
       <div class="yard-content">
-        <h2 class="yard-title">Sân Chảo lửa</h2>
-        <p class="yard-location">30 Phan Thúc Duyện, P. 4, Quận Tân Bình, Hồ Chí Minh</p>
+        <h2 class="yard-title">{{$show->name}}</h2>
+        <p class="yard-location">{{$show->address}}</p>
       </div>
     </div>
-    <div class="yard-item">
+    @endforeach
+    {{-- <div class="yard-item">
       <div class="yard-image">
         <img src="{{asset ('frontend/images/sportplus.png')}}" alt="" class="yard-img">
       </div>
@@ -258,7 +261,7 @@
         <h2 class="yard-title">Sân Chảo lửa</h2>
         <p class="yard-location">30 Phan Thúc Duyện, P. 4, Quận Tân Bình, Hồ Chí Minh</p>
       </div>
-    </div>
+    </div> --}}
   </div>
 </section>
 </x-client-layout>

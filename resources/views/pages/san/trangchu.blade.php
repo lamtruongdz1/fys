@@ -156,32 +156,35 @@
           <h1 class="heading-title">Sân nhiều <span>người đặt</span></h1>
         </div>
         <div class="heading-title-all">
-          <h2 class="heading-title-all">xem tất cả</h2>
+          <a href="/san"><h2 class="heading-title-all">xem tất cả</h2></a>
           <i class='bx bx-chevrons-right'></i>
         </div>
       </div>
       <div class="yard-hot-list swiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
+      @foreach ($yard as $show)
+                  <div class="swiper-slide">
             <div class="yard-hot-item">
               <div class="yard-hot-image">
-                <img src="{{asset ('frontend/images/chaolua.jpg')}}" alt="" class="yard-img">
+                <img src="{{$show->img}}" alt="" class="yard-img">
               </div>
               <div class="yard-hot-text">
                 <div class="yard-hot-type">
                   <span>Sân 5 - sân 7</span>
                 </div>
                 <div class="yard-hot-price">
-                  <p>250.000 VND/giờ</p>
+                  <p>{{ $show->price }}.000 VND/giờ</p>
                 </div>
               </div>
               <div class="yard-hot-content">
-                <h2 class="yard-hot-title">Sân Chảo lửa</h2>
-                <p class="yard-hot-location">30 Phan Thúc Duyện, P. 4, Quận Tân Bình, Hồ Chí Minh</p>
+                <h2 class="yard-hot-title">{{ $show->name }}</h2>
+                <p class="yard-hot-location">{{ $show->address }}</p>
               </div>
             </div>
           </div>
-          <div class="swiper-slide">
+      @endforeach
+
+          {{-- <div class="swiper-slide">
             <div class="yard-hot-item">
               <a href="/thongtinsan">
               <div class="yard-hot-image">
@@ -317,7 +320,7 @@
                 <p class="yard-hot-location">30 Phan Thúc Duyện, P. 4, Quận Tân Bình, Hồ Chí Minh</p>
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
         <div class="swiper-pagination"></div>
         </div>

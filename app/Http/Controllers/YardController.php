@@ -3,22 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Yard;
 
 class YardController extends Controller
 {
+    public function __invoke()
+    {
+        // ...
+    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+
     public function index(){
-        return view('pages.san.danhsachsan');
+        $yard = Yard::all() ; 
+        return view('pages.san.danhsachsan',compact('yard'));
     }
-    public function details(){
-        return view('pages.san.thongtinsan');
+    public function show($id){
+        // $yard = Yard::findOrFail($id);
+        return view('pages.san.thongtinsan',[
+            'yard'=>Yard::findOrFail($id)  
+        ]);
     }
-    public function edit(){
-        return view('admin.yard.edit');
-    }
-    public function add_yard(){
-        return view('admin.yard.new-yard');
-    }
-    public function list(){
-        return view('admin.yard.list-yard');
-    }
+
 }

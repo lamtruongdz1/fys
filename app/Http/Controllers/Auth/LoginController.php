@@ -55,7 +55,7 @@ class LoginController extends Controller
         $this->_registerOrLoginUser($user);
 
         // Return home after login
-        return redirect()->route('/');
+        return redirect('/trangchu');
     }
 
     // Facebook login

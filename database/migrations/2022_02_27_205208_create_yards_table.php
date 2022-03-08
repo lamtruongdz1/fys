@@ -14,7 +14,16 @@ class CreateYardsTable extends Migration
     public function up()
     {
         Schema::create('yards', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('name');
+            $table->string('price');
+            $table->string('img');
+            $table->string('view');
+            $table->string('total_booking');
+            $table->string('address');
+            $table->string('description');
+            $table->string('id_type');
+            $table->boolean('status')->default('1');
             $table->timestamps();
         });
     }

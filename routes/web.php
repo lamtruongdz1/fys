@@ -1,11 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\YardController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\BookingController;
-use Laravel\Socialite\Facades\Socialite;
+
 
 use Illuminate\Support\Facades\Route;
 /*
@@ -28,11 +25,7 @@ Route::get('/404',[HomeController::class,'link404']);
 Route::post('/tim-kiem',[HomeController::class,'search']);
 // yard
 Route::get('/san',[YardController::class,'index']);
-Route::get('/thongtinsan',[YardController::class,'details']);
-
-Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
-
-Route::get('/demo',[HomeController::class,'dashboard'])->name('demo');
+Route::get('/san/{id}',[YardController::class,'show']);
 
 
 // login with social
