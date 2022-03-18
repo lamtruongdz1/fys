@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\YardController;
-
-
+use App\Http\Controllers\mainAdmin;
+use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +26,17 @@ Route::post('/tim-kiem',[HomeController::class,'search']);
 // yard
 Route::get('/san',[YardController::class,'index']);
 Route::get('/san/{id}',[YardController::class,'show']);
+
+
+Route::controller(mainAdmin::class)->group(function () {
+    Route::get('/admin', 'index');
+    Route::get('/dashboard', 'index')->name('dashboard');
+});
+
+
+Route::resource('user', userController::class);
+Route::resource('yard', YardController::class);
+
 
 
 // login with social
