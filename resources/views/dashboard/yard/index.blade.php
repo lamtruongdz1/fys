@@ -1,4 +1,4 @@
-@extends('layouts.dashboard.master',['title' => 'Users'])
+@extends('layouts.dashboard.master',['title' => 'yards'])
 @section('styles')
 @include('layouts.sweetalert.sweetalert_css')
 @endsection
@@ -28,7 +28,7 @@
                         </span>
                         <!--end::Svg Icon-->
                         <input type="text" data-kt-customer-table-filter="search"
-                            class="form-control form-control-solid w-250px ps-15" placeholder="Search Customers" />
+                            class="form-control form-control-solid w-250px ps-15" placeholder="Search Yard" />
                     </div>
                     <!--end::Search-->
                 </div>
@@ -160,7 +160,7 @@
                         <!--end::Export-->
                         <!--begin::Add customer-->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#kt_modal_add_customer">Add Customer</button>
+                            data-bs-target="#kt_modal_add_customer">Add Yard</button>
                         <!--end::Add customer-->
                     </div>
                     <!--end::Toolbar-->
@@ -192,10 +192,10 @@
                                         data-kt-check-target="#kt_customers_table .form-check-input" value="1" />
                                 </div>
                             </th>
-                            <th class="min-w-125px">Customer Name</th>
-                            <th class="min-w-125px">Email</th>
-                            <th class="min-w-125px">Company</th>
-                            <th class="min-w-125px">Avatar</th>
+                            <th class="min-w-125px">Tên Sân</th>
+                            <th class="min-w-125px">Giá</th>
+                            <th class="min-w-125px">Địa chỉ</th>
+                            <th class="min-w-125px">Hình ảnh</th>
                             <th class="min-w-125px">Created Date</th>
                             <th class="text-end min-w-70px">Actions</th>
                         </tr>
@@ -203,8 +203,18 @@
                     </thead>
                     <!--end::Table head-->
                     <!--begin::Table body-->
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                     <tbody class="text-gray-600 fw-bold">
-                        @foreach ($users as $user )
+                        @foreach ($yards as $yard)
                         <tr>
                             <!--begin::Checkbox-->
                             <td>
@@ -214,25 +224,25 @@
                             </td>
                             <!--end::Checkbox-->
                             <!--begin::Name=-->
-                            <td>
-                                <p class="mb-1 text-gray-800 text-hover-primary">{{$user-> name}}</p>
+                            <td >
+                                <p class="mb-1 text-gray-800 text-hover-primary">{{ $yard->name }}</p>
                             </td>
                             <!--end::Name=-->
                             <!--begin::Email=-->
                             <td>
-                                <p class="mb-1 text-gray-600 text-hover-primary">{{$user -> email}}</p>
+                                <p class="mb-1 text-gray-600 text-hover-primary">{{ $yard->price }}.000 VNĐ</p>
                             </td>
                             <!--end::Email=-->
                             <!--begin::Company=-->
-                            <td>-</td>
+                            <td></td>
                             <!--end::Company=-->
                             <!--begin::Payment method=-->
                             <td>
-                                <img src="{{$user -> avatar ?? $user -> avatar ?? Avatar::create($user->name)->toBase64() }}" alt="">
+                                <img src="{{ Storage::url($yard->img) }}" height="120" alt="{{$yard->img}}">
                             </td>
                             <!--end::Payment method=-->
                             <!--begin::Date=-->
-                            <td>{{$user -> created_at}}</td>
+                            <td>{{ $yard->created_at }}</td>
                             <!--end::Date=-->
                             <!--begin::Action=-->
                             <td class="text-end">
@@ -254,12 +264,12 @@
                                     data-kt-menu="true">
                                     <!--begin::Menu item-->
                                     <div class="px-3 menu-item">
-                                        <a href="{{route('user.edit',$user->id)}}" class="px-3 menu-link">Edit</a>
+                                        <a href="{{ route('yard.edit', $yard->id) }}" class="px-3 menu-link">Edit</a>
                                     </div>
                                     <!--end::Menu item-->
                                     <!--begin::Menu item-->
                                     <div class="px-3 menu-item">
-                                        <form action="{{route('user.destroy',$user->id)}}" method="POST">
+                                        <form action="{{ route('yard.destroy', $yard->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-light"> Delete</button>
@@ -289,13 +299,12 @@
                 <!--begin::Modal content-->
                 <div class="modal-content">
                     <!--begin::Form-->
-                    <form class="form" action="{{ route('user.store') }}"
-                         method="POST">
+                    <form class="form" action="{{ route('yard.store') }}" enctype="multipart/form-data" method="POST">
                         @csrf
                         <!--begin::Modal header-->
                         <div class="modal-header" id="kt_modal_add_customer_header">
                             <!--begin::Modal title-->
-                            <h2 class="fw-bolder">Add a Customer</h2>
+                            <h2 class="fw-bolder">Add a Yard</h2>
                             <!--end::Modal title-->
                             <!--begin::Close-->
                             <div id="kt_modal_add_customer_close" class="btn btn-icon btn-sm btn-active-icon-primary">
@@ -328,36 +337,43 @@
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="text" class="form-control form-control-solid" placeholder=""
-                                        name="name" value="Demo" />
+                                        name="name" value="Sân 1" />
                                     <!--end::Input-->
                                 </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
                                 <div class="fv-row mb-7">
                                     <!--begin::Label-->
-                                    <label class="mb-2 fs-6 fw-bold">
-                                        <span class="required">Email</span>
-                                        <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
-                                            title="Email address must be active"></i>
-                                    </label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <input type="email" class="form-control form-control-solid" placeholder=""
-                                        name="email" value="demo@gmail.com" />
-                                    <!--end::Input-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
-                                {{-- <div class="fv-row mb-15">
-                                    <!--begin::Label-->
-                                    <label class="mb-2 fs-6 fw-bold">Description</label>
+                                    <label class="mb-2 required fs-6 fw-bold">Giá</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="text" class="form-control form-control-solid" placeholder=""
-                                        name="description" />
+                                        name="price" value="150" />
                                     <!--end::Input-->
-                                </div> --}}
-                                <!--end::Input group-->
+                                </div>
+                                <div class="fv-row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="mb-2 required fs-6 fw-bold">Hình ảnh</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input type="file" name="image" class="form-control form-control-solid"    />
+                                    <!--end::Input-->
+                                </div>
+                                <div class="fv-row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="mb-2 required fs-6 fw-bold">Giờ mở cửa</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input type="time" name="timeopen" value="08:00" class="form-control form-control-solid"    />
+                                    <!--end::Input-->
+                                </div>
+                                <div class="fv-row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="mb-2 required fs-6 fw-bold">Giờ đóng cửa</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input type="time" name="timeclose" value="20:00" class="form-control form-control-solid"    />
+                                    <!--end::Input-->
+                                </div>
+
                             </div>
                             <!--end::Scroll-->
                         </div>
@@ -370,9 +386,6 @@
                             <!--end::Button-->
                             <!--begin::Button-->
                             <button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary"> Submit
-                                {{-- <span class="indicator-label">Submit</span>
-                                <span class="indicator-progress">Please wait...
-                                    <span class="align-middle spinner-border spinner-border-sm ms-2"></span></span> --}}
                             </button>
                             <!--end::Button-->
                         </div>

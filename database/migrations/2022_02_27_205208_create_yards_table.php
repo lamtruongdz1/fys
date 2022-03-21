@@ -15,14 +15,14 @@ class CreateYardsTable extends Migration
     {
         Schema::create('yards', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('price');
-            $table->string('img');
-            $table->string('view');
-            $table->string('total_booking');
-            $table->string('address');
-            $table->string('description');
-            $table->string('id_type');
+            $table->string('name')->nullable();;
+            $table->string('price')->nullable();;
+            $table->string('img')->nullable();;
+            $table->string('view')->nullable();;
+            $table->string('total_booking')->nullable();;
+            $table->string('address')->nullable();;
+            $table->text('description')->nullable();;
+            $table->string('id_type')->nullable();;
             $table->boolean('status')->default('1');
             $table->timestamps();
         });

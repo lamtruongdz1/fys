@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Yard;
 
@@ -11,21 +11,41 @@ class YardController extends Controller
     {
         // ...
     }
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
 
-    public function index(){
-        $yard = Yard::all() ;
-        return view('pages.san.danhsachsan',compact('yard'));
+    public function index()
+    {
+        $yards = Yard::all();
+        return view('dashboard.yard.index', compact('yards'));
     }
-    public function show($id){
+
+
+    public function show($id)
+    {
         // $yard = Yard::findOrFail($id);
-        return view('pages.san.thongtinsan',[
-            'yard'=>Yard::findOrFail($id)
+        return view('pages.san.thongtinsan', [
+            'yard' => Yard::findOrFail($id)
         ]);
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'price' => 'required',
+        ]);
+
+        $path = $request->file('image')->store('public/uploads/yard');
+
+        $yard = new Yard;
+        $yard->name = $request->input('name');
+        $yard->price = $request->input('price');
+        $yard->img = $path;
+
+        $yard->save();
+        return redirect()->back()->with('message','yard Image Upload Successfully');
+    }
+
     public function update(Request $request, Yard $yard)
     {
         $request->validate([
@@ -37,13 +57,13 @@ class YardController extends Controller
         $yard->update($request->all());
 
         return redirect()->route('yard.index');
-            // ->with('success','user updated successfully');
+        // ->with('success','user updated successfully');
     }
+
     public function destroy(Yard $yard)
     {
         $yard->delete();
-         return redirect('yard.index');
+        return redirect('yard.index');
         //  ->with('flash_message', 'User deleted!');
     }
-
 }

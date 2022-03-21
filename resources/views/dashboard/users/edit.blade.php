@@ -3,6 +3,19 @@
 <div class="px-4 mt-4 container-xl">
     <!-- Account page navigation-->
     <hr class="mt-0 mb-4">
+    <form action="{{ route('user.update',$user->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="row">
         <div class="col-xl-4">
             <!-- Profile picture card-->
@@ -12,10 +25,7 @@
                     <!-- Profile picture image-->
 
                     <img class="mb-2 img-account-profile rounded-circle" src="{{$user->avatar}}" alt="">
-                    <!-- Profile picture help block-->
-                    <div class="mb-4 small font-italic text-muted">JPG or PNG no larger than 5 MB</div>
-                    <!-- Profile picture upload button-->
-                    <button class="btn btn-primary" type="button">Upload new image</button>
+                    <input class="btn btn-primary" type="file" name="avatar">Upload new image
                 </div>
             </div>
         </div>
@@ -24,9 +34,6 @@
             <div class="mb-4 card">
                 <div class="card-header">Account Details</div>
                 <div class="card-body">
-                    <form action="{{ route('user.update',$user->id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
                         <!-- Form Group (username)-->
                         <div class="mb-3">
                             <label class="mb-1 small" for="inputUsername">Full Name</label>

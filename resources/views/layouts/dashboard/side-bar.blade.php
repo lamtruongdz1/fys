@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click" data-kt-menu-placement="right-start" class="py-3 menu-item">
-                    <span class="menu-link" title="Users Manager" data-bs-toggle="tooltip" data-bs-trigger="hover"
+                    <span class="menu-link" title="Yards Manager" data-bs-toggle="tooltip" data-bs-trigger="hover"
                         data-bs-dismiss="click" data-bs-placement="right">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
