@@ -33,7 +33,9 @@ Route::controller(mainAdmin::class)->group(function () {
     Route::get('/dashboard', 'index')->name('dashboard');
 });
 
-
+Route::get('/export_excel', [userController::class, 'export_excel']);
+Route::get('/export_csv', [userController::class, 'export_csv']);
+Route::get('/export_pdf', [userController::class, 'download_pdf']);
 Route::resource('user', userController::class);
 Route::resource('yard', YardController::class);
 

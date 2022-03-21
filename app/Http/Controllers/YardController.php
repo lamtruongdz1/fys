@@ -33,6 +33,9 @@ class YardController extends Controller
             'name' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'price' => 'required',
+            'address' => 'required',
+            'timeopen' => 'required',
+            'timeclose' => 'required',
         ]);
 
         $path = $request->file('image')->store('public/uploads/yard');
@@ -40,6 +43,9 @@ class YardController extends Controller
         $yard = new Yard;
         $yard->name = $request->input('name');
         $yard->price = $request->input('price');
+        $yard->address = $request->input('address');
+        $yard->time_open = $request->input('timeopen');
+        $yard->time_close = $request->input('timeclose');
         $yard->img = $path;
 
         $yard->save();

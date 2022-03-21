@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Exports\EmployeeExport;
+use Excel;
 use Image;
+use PDF;
 class userController extends Controller
 {
     /**
@@ -39,11 +42,18 @@ class userController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
+            'avatar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             // 'detail' => 'required',
 
         ]);
+        $path = $request->file('avatar')->store('public/uploads/user');
 
-        User::create($request->all());
+        $user = new User;
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->avatar = $path;
+        $user->save();
+        
 
         return redirect()->route('user.index');
             // ->with('success','Product created successfully.');
@@ -104,5 +114,19 @@ class userController extends Controller
         $user->delete();
          return redirect('users/list');
         //  ->with('flash_message', 'User deleted!');
+    }
+
+    public function export_excel(){
+        return Excel::download(new EmployeeExport, 'user_excel.xlsx');
+    }
+
+    public function export_csv(){
+        return Excel::download(new EmployeeExport, 'user_excel.csv');
+    }
+
+    public function download_pdf(){
+        $users = User::all();
+        $pdf = PDF::loadView('dashboard.users.pdf_user', compact('users'));
+        return $pdf;
     }
 }

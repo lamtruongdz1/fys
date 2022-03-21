@@ -10,7 +10,7 @@
         <!--begin::Card-->
         <div class="card">
             <!--begin::Card header-->
-            <div class="pt-6 border-0 card-header">
+            <div class="pt-6 border-0 car d-header">
                 <!--begin::Card title-->
                 <div class="card-title">
                     <!--begin::Search-->
@@ -234,7 +234,9 @@
                             </td>
                             <!--end::Email=-->
                             <!--begin::Company=-->
-                            <td></td>
+                            <td>
+                                 <p class="mb-1 text-gray-600 text-hover-primary">{{ $yard->address }}</p>
+                            </td>
                             <!--end::Company=-->
                             <!--begin::Payment method=-->
                             <td>
@@ -355,6 +357,14 @@
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="file" name="image" class="form-control form-control-solid"    />
+                                    <!--end::Input-->
+                                </div>
+                                <div class="fv-row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="mb-2 required fs-6 fw-bold">Địa chỉ</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input type="text" name="address" class="form-control form-control-solid"    />
                                     <!--end::Input-->
                                 </div>
                                 <div class="fv-row mb-7">
