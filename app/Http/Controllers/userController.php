@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Exports\EmployeeExport;
 use Excel;
-use Image;
 use PDF;
 class userController extends Controller
 {
@@ -53,7 +52,7 @@ class userController extends Controller
         $user->email = $request->input('email');
         $user->avatar = $path;
         $user->save();
-        
+
 
         return redirect()->route('user.index');
             // ->with('success','Product created successfully.');
@@ -127,6 +126,6 @@ class userController extends Controller
     public function download_pdf(){
         $users = User::all();
         $pdf = PDF::loadView('dashboard.users.pdf_user', compact('users'));
-        return $pdf;
+        return $pdf->download('list_suser.pdf');
     }
 }
