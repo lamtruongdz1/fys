@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Exports\EmployeeExport;
+use App\Imports\UsersImport;
 use Excel;
 use Image;
 use PDF;
@@ -127,6 +128,14 @@ class userController extends Controller
     public function download_pdf(){
         $users = User::all();
         $pdf = PDF::loadView('dashboard.users.pdf_user', compact('users'));
-        return $pdf;
+        return $pdf->download('user.pdf');
+    }
+
+     public function import(Request $request) 
+    {
+        $file = $request->file('file');
+        Excel::import(new UsersImport, $file);
+        
+        return back()->withStatus('excel into');
     }
 }

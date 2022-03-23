@@ -142,6 +142,11 @@
                         <a href="/export_excel" class="btn btn-light-primary me-3">Excel</a>
                         <a href="/export_pdf" class="btn btn-light-primary me-3">PDF</a>
                         <a href="/export_csv" class="btn btn-light-primary me-3">CSV</a>
+                        <form action="/import_excel" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input href="/import_excel" type="file" name="file" class="btn btn-light-primary me-3">
+                        <button type="submit" class="btn btn-light-primary me-3">Import</button>
+                        </form>
                         <!--end::Export-->
                         <!--begin::Add customer-->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
