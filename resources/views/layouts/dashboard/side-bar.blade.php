@@ -64,11 +64,23 @@
                             </div>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{route('user.index')}}">
+                            <a class="menu-link" href="{{route('users.index')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Users List</span>
+                                <span class="menu-title">Users</span>
+                            </a>
+                            <a class="menu-link" href="#">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Roles</span>
+                            </a>
+                            <a class="menu-link" href="#">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Permissions</span>
                             </a>
                         </div>
                     </div>

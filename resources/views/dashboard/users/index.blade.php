@@ -250,12 +250,12 @@
                                     data-kt-menu="true">
                                     <!--begin::Menu item-->
                                     <div class="px-3 menu-item">
-                                        <a href="{{ route('yard.edit', $user->id) }}" class="px-3 menu-link">Edit</a>
+                                        <a href="{{ route('users.edit', $user->id) }}" class="px-3 menu-link">Edit</a>
                                     </div>
                                     <!--end::Menu item-->
                                     <!--begin::Menu item-->
                                     <div class="px-3 menu-item">
-                                        <form action="{{ route('user.destroy', $user->id) }}" method="POST">
+                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-light"> Delete</button>
@@ -285,7 +285,7 @@
                 <!--begin::Modal content-->
                 <div class="modal-content">
                     <!--begin::Form-->
-                    <form class="form" action="{{ route('user.store') }}" enctype="multipart/form-data" method="POST">
+                    <form class="form" id="kt_modal_add_customer_form" action="{{ route('users.store') }}" enctype="multipart/form-data" method="POST">
                         @csrf
                         <!--begin::Modal header-->
                         <div class="modal-header" id="kt_modal_add_customer_header">
