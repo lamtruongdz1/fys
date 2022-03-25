@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\YardController;
 use App\Http\Controllers\mainAdmin;
@@ -39,7 +40,9 @@ Route::post('/import_excel', [userController::class, 'import']);
 Route::get('users/permission', [userController::class, 'permission'])->name('users.permission');
 Route::resource('users', userController::class);
 Route::resource('yard', YardController::class);
+Route::resource('districts', DistrictController::class);
 
+// thích thì có thể viết route ntn
 
 
 // login with social

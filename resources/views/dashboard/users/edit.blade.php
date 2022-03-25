@@ -1,9 +1,12 @@
 @extends('layouts.dashboard.master' , ['title' => 'Users'])
+@section('styles')
+    @include('layouts.sweetalert.sweetalert_css')
+@endsection
 @section('content')
     <div class="px-4 mt-4 container-xl">
         <!-- Account page navigation-->
         <hr class="mt-0 mb-4">
-        <form action="{{ route('user.update', $user->id) }}" method="POST">
+        <form action="{{ route('users.update', $user->id) }}" method="POST">
             @csrf
             @method('PUT')
             @if ($errors->any())
@@ -63,6 +66,7 @@
     </div>
     </div>
     </div>
+    @endsection
 @section('scripts')
     @include('layouts.sweetalert.sweetalert_js')
 @endsection
