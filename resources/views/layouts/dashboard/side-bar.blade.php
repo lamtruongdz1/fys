@@ -76,7 +76,7 @@
                                 </span>
                                 <span class="menu-title">Roles</span>
                             </a>
-                            <a class="menu-link" href="#">
+                            <a class="menu-link" href="{{route('users.permission')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
