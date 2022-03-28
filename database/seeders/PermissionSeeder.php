@@ -7,6 +7,8 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
 use Database\Factories\UserFactory;
+use Illuminate\Support\Facades\Hash;
+
 class PermissionSeeder extends Seeder
 {
     /**
@@ -36,6 +38,7 @@ class PermissionSeeder extends Seeder
         $role2->givePermissionTo('Quản lý nhân sự');
 
 
+
         $role3 = Role::create(['name' => 'Super-Admin']);
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
@@ -47,18 +50,21 @@ class PermissionSeeder extends Seeder
         $user = \App\Models\User::factory()->create([
             'name' => 'Editor',
             'email' => 'editor@test.dev',
+            'password' => Hash::make('password'),
         ]);
         $user->assignRole($role1);
 
         $user = \App\Models\User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@test.dev',
+            'password' => Hash::make('password'),
         ]);
         $user->assignRole($role2);
 
         $user = \App\Models\User::factory()->create([
             'name' => 'Super-Admin',
             'email' => 'superadmin@test.dev',
+            'password' => Hash::make('password'),
         ]);
         $user->assignRole($role3);
     }

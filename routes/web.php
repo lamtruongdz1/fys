@@ -30,18 +30,18 @@ Route::get('/san/{param}',[YardController::class,'show']);
 
 
 
-Route::controller(mainAdmin::class)->group(function () {
-    Route::get('/admin', 'index');
-    Route::get('/dashboard', 'index')->name('dashboard');
+Route::group(['middleware' => ['role:admin']],function () {
+    Route::get('/admin', [mainAdmin::class,'index']);
+    Route::get('/dashboard',[mainAdmin::class,'index'])->name('dashboard');
+    Route::get('/export_excel', [userController::class, 'export_excel']);
+    Route::get('/export_csv', [userController::class, 'export_csv']);
+    Route::get('/export_pdf', [userController::class, 'download_pdf']);
+    Route::post('/import_excel', [userController::class, 'import']);
+    Route::get('users/permission', [userController::class, 'permission'])->name('users.permission');
+    Route::resource('users', userController::class);
+    Route::resource('yard', YardController::class);
+    Route::resource('districts', DistrictController::class);
 });
-Route::get('/export_excel', [userController::class, 'export_excel']);
-Route::get('/export_csv', [userController::class, 'export_csv']);
-Route::get('/export_pdf', [userController::class, 'download_pdf']);
-Route::post('/import_excel', [userController::class, 'import']);
-Route::get('users/permission', [userController::class, 'permission'])->name('users.permission');
-Route::resource('users', userController::class);
-Route::resource('yard', YardController::class);
-Route::resource('districts', DistrictController::class);
 
 // thích thì có thể viết route ntn
 
