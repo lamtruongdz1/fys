@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class YardFactory extends Factory
+class UserFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,8 +14,7 @@ class YardFactory extends Factory
     public function definition()
     {
         return [
-            'name',
-            'email'
+            //
         ];
     }
 }
