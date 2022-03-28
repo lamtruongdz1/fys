@@ -14,8 +14,7 @@ class YardFactory extends Factory
     public function definition()
     {
         return [
-            'name',
-            'email'
+            //
         ];
     }
 }

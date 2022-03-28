@@ -19,11 +19,13 @@ class YardController extends Controller
     }
 
 
-    public function show($id)
+    public function show($param)
     {
         // $yard = Yard::findOrFail($id);
         return view('pages.san.thongtinsan', [
-            'yard' => Yard::findOrFail($id)
+            'yard' => Yard::where('id',$param)
+                            ->orWhere('slug',$param)
+                            ->firstOrFail()
         ]);
     }
 

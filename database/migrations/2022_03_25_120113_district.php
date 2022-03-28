@@ -18,6 +18,7 @@ class District extends Migration
             $table->string('name',150)->unique();
             $table->string('slug',150)->unique();
             $table->timestamps();
+            // $table->foreignId('id')->references('id_districts')->on('yards');
         });
     }
 

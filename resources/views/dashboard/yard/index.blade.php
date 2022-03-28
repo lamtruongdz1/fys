@@ -38,7 +38,7 @@
                     <!--begin::Toolbar-->
                     <div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
                         <!--begin::Filter-->
-                        <button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click"
+                        {{-- <button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click"
                             data-kt-menu-placement="bottom-end">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen031.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -50,9 +50,9 @@
                                 </svg>
                             </span>
                             <!--end::Svg Icon-->Filter
-                        </button>
+                        </button> --}}
                         <!--begin::Menu 1-->
-                        <div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true"
+                        {{-- <div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true"
                             id="kt-toolbar-filter">
                             <!--begin::Header-->
                             <div class="py-5 px-7">
@@ -135,11 +135,11 @@
                                 <!--end::Actions-->
                             </div>
                             <!--end::Content-->
-                        </div>
+                        </div> --}}
                         <!--end::Menu 1-->
                         <!--end::Filter-->
                         <!--begin::Export-->
-                        <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal"
+                        {{-- <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal"
                             data-bs-target="#kt_customers_export_modal">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -156,10 +156,10 @@
                                 </svg>
                             </span>
                             <!--end::Svg Icon-->Export
-                        </button>
+                        </button> --}}
                         <!--end::Export-->
                         <!--begin::Add customer-->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal"
                             data-bs-target="#kt_modal_add_customer">Add Yard</button>
                         <!--end::Add customer-->
                     </div>
@@ -196,7 +196,6 @@
                             <th class="min-w-125px">Giá</th>
                             <th class="min-w-125px">Địa chỉ</th>
                             <th class="min-w-125px">Hình ảnh</th>
-                            <th class="min-w-125px">Created Date</th>
                             <th class="text-end min-w-70px">Actions</th>
                         </tr>
                         <!--end::Table row-->
@@ -240,12 +239,13 @@
                             <!--end::Company=-->
                             <!--begin::Payment method=-->
                             <td>
-                                <img src="{{ Storage::url($yard->img) }}" height="120" alt="{{$yard->img}}">
+                                @if (Storage::exists($yard->img))
+                                <img src="{{ Storage::url($yard->img) }}" width="250" height="120" alt="">
+                            @else
+                                <img src="{{ $yard->img }}" width="150" height="120" alt="" >
+                            @endif
                             </td>
                             <!--end::Payment method=-->
-                            <!--begin::Date=-->
-                            <td>{{ $yard->created_at }}</td>
-                            <!--end::Date=-->
                             <!--begin::Action=-->
                             <td class="text-end">
                                 <a href="#" class="btn btn-sm btn-light btn-active-light-primary"

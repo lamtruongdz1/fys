@@ -7,7 +7,7 @@ use App\Models\Yard;
 class HomeController extends Controller
 {
     public function index(){
-        $yard = Yard::orderBy('view','DESC')->limit(5)->get() ; 
+        $yard = Yard::orderBy('view','DESC')->limit(5)->get() ;
         return view('pages.san.trangchu',compact('yard'));
     }
     public function link404(){
