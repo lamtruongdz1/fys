@@ -22,7 +22,7 @@ class DistrictController extends Controller
         $district = new District;
         $district->name = $request->input('name');
         $district->slug = '';
-        $district->save(); // này là lưu lên database
+        $district->save();
         return redirect()->back();
     }
 
