@@ -44,7 +44,11 @@
         @auth
         <div class="login">
           <!-- Account Management -->
-          <a href="{{ route('profile.show') }}">{{ Auth::user()->name }}</a>  
+          @role('admin')
+          <a href="{{ route('dashboard') }}">{{ Auth::user()->name }}</a>
+          @else
+          <a href="{{ route('') }}">{{ Auth::user()->name }}</a>
+          @endrole
         <!-- Authentication -->
         <form method="POST" action="{{ route('logout') }}">
             @csrf
@@ -60,9 +64,9 @@
         <div class="login">
           <a href="/login">đăng nhập</a>
           <a href="/register">đăng ký</a>
-        </div>  
+        </div>
         @endguest
-  
+
         <div id="menuBar" class="icons bx bx-menu"></div>
       </div>
     </header>
