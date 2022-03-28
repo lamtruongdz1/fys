@@ -252,7 +252,14 @@
                 <!--begin::Menu item-->
                 <div class="px-3 menu-item">
                     <div class="px-3 py-3 menu-content">
-                        <a class="px-4 btn btn-primary btn-sm" href="#">Generate Reports</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                                {{ __('Đăng Xuất') }}
+                            </a>
+                        </form>
                     </div>
                 </div>
                 <!--end::Menu item-->
