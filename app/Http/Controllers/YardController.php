@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Yard;
-
+use App\Models\District;
+use Str;
 class YardController extends Controller
 {
     public function __invoke()
@@ -15,7 +17,8 @@ class YardController extends Controller
     public function index()
     {
         $yards = Yard::all();
-        return view('dashboard.yard.index', compact('yards'));
+        $districts = District::all();
+        return view('dashboard.yard.index', compact('yards', 'districts'));
     }
 
 
@@ -23,9 +26,9 @@ class YardController extends Controller
     {
         // $yard = Yard::findOrFail($id);
         return view('pages.san.thongtinsan', [
-            'yard' => Yard::where('id',$param)
-                            ->orWhere('slug',$param)
-                            ->firstOrFail()
+            'yard' => Yard::where('id', $param)
+                ->orWhere('slug', $param)
+                ->firstOrFail()
         ]);
     }
 
@@ -38,20 +41,23 @@ class YardController extends Controller
             'address' => 'required',
             'timeopen' => 'required',
             'timeclose' => 'required',
+            'district' => 'required'
         ]);
 
         $path = $request->file('image')->store('public/uploads/yard');
 
         $yard = new Yard;
         $yard->name = $request->input('name');
+        $yard->slug =Str::slug('$yard->name');
         $yard->price = $request->input('price');
         $yard->address = $request->input('address');
         $yard->time_open = $request->input('timeopen');
         $yard->time_close = $request->input('timeclose');
+        $yard->id_districts = $request->get('district');
         $yard->img = $path;
 
         $yard->save();
-        return redirect()->back()->with('message','yard Image Upload Successfully');
+        return redirect()->back()->with('message', 'yard Image Upload Successfully');
     }
 
     public function update(Request $request, Yard $yard)
