@@ -43,7 +43,6 @@ Route::group(['middleware' => ['role:admin']],function () {
     Route::resource('districts', DistrictController::class);
 });
 
-// thích thì có thể viết route ntn
 
 
 // login with social
