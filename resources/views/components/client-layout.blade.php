@@ -47,7 +47,7 @@
           @role('admin')
           <a href="{{ route('dashboard') }}">{{ Auth::user()->name }}</a>
           @else
-          <a href="{{ route('') }}">{{ Auth::user()->name }}</a>
+          <a href="">{{ Auth::user()->name }}</a>
           @endrole
         <!-- Authentication -->
         <form method="POST" action="{{ route('logout') }}">

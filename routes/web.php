@@ -30,7 +30,7 @@ Route::get('/san/{param}',[YardController::class,'show']);
 
 
 
-Route::group(['middleware' => ['role:admin']],function () {
+Route::group(['middleware' => ['permission:Quản lý bài viết']],function () {
     Route::get('/admin', [mainAdmin::class,'index']);
     Route::get('/dashboard',[mainAdmin::class,'index'])->name('dashboard');
     Route::get('/export_excel', [userController::class, 'export_excel']);
