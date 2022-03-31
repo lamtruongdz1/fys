@@ -1,11 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Yard;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\DB;
 
+=======
+use App\Models\District;
+use Str;
+>>>>>>> e98e3fba7c9e89569fac7f38d06c7507a77a25b4
 class YardController extends Controller
 {
     public function __invoke()
@@ -16,7 +22,8 @@ class YardController extends Controller
     public function index()
     {
         $yards = Yard::all();
-        return view('dashboard.yard.index', compact('yards'));
+        $districts = District::all();
+        return view('dashboard.yard.index', compact('yards', 'districts'));
     }
     public function index_client()
     {
@@ -26,11 +33,13 @@ class YardController extends Controller
     }
 
 
-    public function show($id)
+    public function show($param)
     {
         // $yard = Yard::findOrFail($id);
         return view('pages.san.thongtinsan', [
-            'yard' => Yard::findOrFail($id)
+            'yard' => Yard::where('id', $param)
+                ->orWhere('slug', $param)
+                ->firstOrFail()
         ]);
     }
     public function show_client($id)
@@ -50,20 +59,23 @@ class YardController extends Controller
             'address' => 'required',
             'timeopen' => 'required',
             'timeclose' => 'required',
+            'district' => 'required'
         ]);
 
         $path = $request->file('image')->store('public/uploads/yard');
 
         $yard = new Yard;
         $yard->name = $request->input('name');
+        $yard->slug =Str::slug('$yard->name');
         $yard->price = $request->input('price');
         $yard->address = $request->input('address');
         $yard->time_open = $request->input('timeopen');
         $yard->time_close = $request->input('timeclose');
+        $yard->id_districts = $request->get('district');
         $yard->img = $path;
 
         $yard->save();
-        return redirect()->back()->with('message','yard Image Upload Successfully');
+        return redirect()->back()->with('message', 'yard Image Upload Successfully');
     }
 
     public function update(Request $request, Yard $yard)

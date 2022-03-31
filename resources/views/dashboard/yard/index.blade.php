@@ -38,7 +38,7 @@
                     <!--begin::Toolbar-->
                     <div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
                         <!--begin::Filter-->
-                        <button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click"
+                        {{-- <button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click"
                             data-kt-menu-placement="bottom-end">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen031.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -50,9 +50,9 @@
                                 </svg>
                             </span>
                             <!--end::Svg Icon-->Filter
-                        </button>
+                        </button> --}}
                         <!--begin::Menu 1-->
-                        <div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true"
+                        {{-- <div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true"
                             id="kt-toolbar-filter">
                             <!--begin::Header-->
                             <div class="py-5 px-7">
@@ -135,11 +135,11 @@
                                 <!--end::Actions-->
                             </div>
                             <!--end::Content-->
-                        </div>
+                        </div> --}}
                         <!--end::Menu 1-->
                         <!--end::Filter-->
                         <!--begin::Export-->
-                        <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal"
+                        {{-- <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal"
                             data-bs-target="#kt_customers_export_modal">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -156,10 +156,10 @@
                                 </svg>
                             </span>
                             <!--end::Svg Icon-->Export
-                        </button>
+                        </button> --}}
                         <!--end::Export-->
                         <!--begin::Add customer-->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal"
                             data-bs-target="#kt_modal_add_customer">Add Yard</button>
                         <!--end::Add customer-->
                     </div>
@@ -196,7 +196,6 @@
                             <th class="min-w-125px">Giá</th>
                             <th class="min-w-125px">Địa chỉ</th>
                             <th class="min-w-125px">Hình ảnh</th>
-                            <th class="min-w-125px">Created Date</th>
                             <th class="text-end min-w-70px">Actions</th>
                         </tr>
                         <!--end::Table row-->
@@ -240,12 +239,13 @@
                             <!--end::Company=-->
                             <!--begin::Payment method=-->
                             <td>
-                                <img src="{{ Storage::url($yard->img) }}" height="120" alt="{{$yard->img}}">
+                                @if (Storage::exists($yard->img))
+                                <img src="{{ Storage::url($yard->img) }}" width="250" height="120" alt="">
+                            @else
+                                <img src="{{ $yard->img }}" width="150" height="120" alt="" >
+                            @endif
                             </td>
                             <!--end::Payment method=-->
-                            <!--begin::Date=-->
-                            <td>{{ $yard->created_at }}</td>
-                            <!--end::Date=-->
                             <!--begin::Action=-->
                             <td class="text-end">
                                 <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
@@ -288,6 +288,8 @@
                     </tbody>
                     <!--end::Table body-->
                 </table>
+
+
                 <!--end::Table-->
             </div>
             <!--end::Card body-->
@@ -383,6 +385,18 @@
                                     <input type="time" name="timeclose" value="20:00" class="form-control form-control-solid"    />
                                     <!--end::Input-->
                                 </div>
+                                <div class="fv-row mb-7">
+                                    <label class="required form-label">Quận/Huyện</label>
+                                    <select class="form-select mb-2" name="district" data-control="select2" data-hide-search="true" data-placeholder="Select an option">
+                                        <option></option>
+                                        @foreach ($districts as $district )
+                                        <option value="{{$district->id}}">{{$district->name}}</option>
+                                        @endforeach
+                                        {{-- <option value="0">Tax Free</option>
+                                        <option value="1">Taxable Goods</option>
+                                        <option value="2">Downloadable Product</option> --}}
+                                    </select>
+                                </div>
 
                             </div>
                             <!--end::Scroll-->
@@ -405,124 +419,6 @@
                 </div>
             </div>
         </div>
-        <!--end::Modal - Customers - Add-->
-        <!--begin::Modal - Adjust Balance-->
-        <div class="modal fade" id="kt_customers_export_modal" tabindex="-1" aria-hidden="true">
-            <!--begin::Modal dialog-->
-            <div class="modal-dialog modal-dialog-centered mw-650px">
-                <!--begin::Modal content-->
-                <div class="modal-content">
-                    <!--begin::Modal header-->
-                    <div class="modal-header">
-                        <!--begin::Modal title-->
-                        <h2 class="fw-bolder">Export Customers</h2>
-                        <!--end::Modal title-->
-                        <!--begin::Close-->
-                        <div id="kt_customers_export_close" class="btn btn-icon btn-sm btn-active-icon-primary">
-                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-                            <span class="svg-icon svg-icon-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none">
-                                    <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
-                                        transform="rotate(-45 6 17.3137)" fill="black" />
-                                    <rect x="7.41422" y="6" width="16" height="2" rx="1"
-                                        transform="rotate(45 7.41422 6)" fill="black" />
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                        </div>
-                        <!--end::Close-->
-                    </div>
-                    <!--end::Modal header-->
-                    <!--begin::Modal body-->
-                    <div class="mx-5 modal-body scroll-y mx-xl-15 my-7">
-                        <!--begin::Form-->
-                        <form id="kt_customers_export_form" class="form" action="#">
-                            <!--begin::Input group-->
-                            <div class="mb-10 fv-row">
-                                <!--begin::Label-->
-                                <label class="mb-5 fs-5 fw-bold form-label">Select Date Range:</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
-                                <input class="form-control form-control-solid" placeholder="Pick a date" name="date" />
-                                <!--end::Input-->
-                            </div>
-                            <!--end::Input group-->
-                            <!--begin::Input group-->
-                            <div class="mb-10 fv-row">
-                                <!--begin::Label-->
-                                <label class="mb-5 fs-5 fw-bold form-label">Select Export Format:</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
-                                <select data-control="select2" data-placeholder="Select a format"
-                                    data-hide-search="true" name="format" class="form-select form-select-solid">
-                                    <option value="excell">Excel</option>
-                                    <option value="pdf">PDF</option>
-                                    <option value="cvs">CVS</option>
-                                    <option value="zip">ZIP</option>
-                                </select>
-                                <!--end::Input-->
-                            </div>
-                            <!--end::Input group-->
-                            <!--begin::Row-->
-                            <div class="row fv-row mb-15">
-                                <!--begin::Label-->
-                                <label class="mb-5 fs-5 fw-bold form-label">Payment Type:</label>
-                                <!--end::Label-->
-                                <!--begin::Radio group-->
-                                <div class="d-flex flex-column">
-                                    <!--begin::Radio button-->
-                                    <label class="mb-3 form-check form-check-custom form-check-sm form-check-solid">
-                                        <input class="form-check-input" type="checkbox" value="1" checked="checked"
-                                            name="payment_type" />
-                                        <span class="text-gray-600 form-check-label fw-bold">All</span>
-                                    </label>
-                                    <!--end::Radio button-->
-                                    <!--begin::Radio button-->
-                                    <label class="mb-3 form-check form-check-custom form-check-sm form-check-solid">
-                                        <input class="form-check-input" type="checkbox" value="2" checked="checked"
-                                            name="payment_type" />
-                                        <span class="text-gray-600 form-check-label fw-bold">Visa</span>
-                                    </label>
-                                    <!--end::Radio button-->
-                                    <!--begin::Radio button-->
-                                    <label class="mb-3 form-check form-check-custom form-check-sm form-check-solid">
-                                        <input class="form-check-input" type="checkbox" value="3" name="payment_type" />
-                                        <span class="text-gray-600 form-check-label fw-bold">Mastercard</span>
-                                    </label>
-                                    <!--end::Radio button-->
-                                    <!--begin::Radio button-->
-                                    <label class="form-check form-check-custom form-check-sm form-check-solid">
-                                        <input class="form-check-input" type="checkbox" value="4" name="payment_type" />
-                                        <span class="text-gray-600 form-check-label fw-bold">American Express</span>
-                                    </label>
-                                    <!--end::Radio button-->
-                                </div>
-                                <!--end::Input group-->
-                            </div>
-                            <!--end::Row-->
-                            <!--begin::Actions-->
-                            <div class="text-center">
-                                <button type="reset" id="kt_customers_export_cancel"
-                                    class="btn btn-light me-3">Discard</button>
-                                <button type="submit" id="kt_customers_export_submit" class="btn btn-primary">
-                                    <span class="indicator-label">Submit</span>
-                                    <span class="indicator-progress">Please wait...
-                                        <span class="align-middle spinner-border spinner-border-sm ms-2"></span></span>
-                                </button>
-                            </div>
-                            <!--end::Actions-->
-                        </form>
-                        <!--end::Form-->
-                    </div>
-                    <!--end::Modal body-->
-                </div>
-                <!--end::Modal content-->
-            </div>
-            <!--end::Modal dialog-->
-        </div>
-        <!--end::Modal - New Card-->
-        <!--end::Modals-->
     </div>
     <!--end::Container-->
 </div>

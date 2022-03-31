@@ -3,8 +3,8 @@
     data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_toggle">
     <!--begin::Logo-->
     <div class="pt-10 aside-logo flex-column-auto pt-lg-20" id="kt_aside_logo">
-        <a href="{{ route('dashboard')}}">
-            <img alt="Logo" src="{{asset('backend/assets/media/logos/logo-demo9.svg')}}" class="h-40px" />
+        <a href="{{ route('dashboard') }}">
+            <img alt="Logo" src="{{ asset('backend/assets/media/logos/logo-demo9.svg') }}" class="h-40px" />
         </a>
     </div>
     <!--end::Logo-->
@@ -18,7 +18,7 @@
                 class="menu menu-column menu-title-gray-600 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-icon-gray-400 menu-arrow-gray-400 fw-bold fs-6"
                 data-kt-menu="true">
                 <div class="py-3 menu-item">
-                    <a class="menu-link active" href="{{ route('dashboard')}}" title="Dashboard"
+                    <a class="menu-link active" href="{{ route('dashboard') }}" title="Dashboard"
                         data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click"
                         data-bs-placement="right">
                         <span class="menu-icon">
@@ -60,15 +60,27 @@
                     <div class="px-1 py-4 menu-sub menu-sub-dropdown w-225px">
                         <div class="menu-item">
                             <div class="menu-content">
-                                <span class="py-1 menu-section fs-5 fw-bolder ps-1">Users Manager</span>
+                                <span class="py-1 menu-section fs-5 fw-bolder ps-1">Users Management</span>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{route('user.index')}}">
+                            <a class="menu-link" href="{{ route('users.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Users List</span>
+                                <span class="menu-title">Users</span>
+                            </a>
+                            <a class="menu-link" href="#">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Roles</span>
+                            </a>
+                            <a class="menu-link" href="{{ route('users.permission') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Permissions</span>
                             </a>
                         </div>
                     </div>
@@ -97,16 +109,57 @@
                     <div class="px-1 py-4 menu-sub menu-sub-dropdown w-225px">
                         <div class="menu-item">
                             <div class="menu-content">
-                                <span class="py-1 menu-section fs-5 fw-bolder ps-1">Yard Manager</span>
+                                <span class="py-1 menu-section fs-5 fw-bolder ps-1">Yard Management</span>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{route('yard.index')}}">
+                            <a class="menu-link" href="{{ route('yard.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">Yard List</span>
                             </a>
+                        </div>
+                    </div>
+                </div>
+                <div data-kt-menu-trigger="click" data-kt-menu-placement="right-start" class="menu-item py-3">
+                    <span class="menu-link" title="Apps" data-bs-toggle="tooltip" data-bs-trigger="hover"
+                        data-bs-dismiss="click" data-bs-placement="right">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/abstract/abs037.svg-->
+                            <span class="svg-icon svg-icon-2x">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <path opacity="0.3"
+                                        d="M2.10001 10C3.00001 5.6 6.69998 2.3 11.2 2L8.79999 4.39999L11.1 7C9.60001 7.3 8.30001 8.19999 7.60001 9.59999L4.5 12.4L2.10001 10ZM19.3 11.5L16.4 14C15.7 15.5 14.4 16.6 12.7 16.9L15 19.5L12.6 21.9C17.1 21.6 20.8 18.2 21.7 13.9L19.3 11.5Z"
+                                        fill="black" />
+                                    <path
+                                        d="M13.8 2.09998C18.2 2.99998 21.5 6.69998 21.8 11.2L19.4 8.79997L16.8 11C16.5 9.39998 15.5 8.09998 14 7.39998L11.4 4.39998L13.8 2.09998ZM12.3 19.4L9.69998 16.4C8.29998 15.7 7.3 14.4 7 12.8L4.39999 15.1L2 12.7C2.3 17.2 5.7 20.9 10 21.8L12.3 19.4Z"
+                                        fill="black" />
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                    </span>
+                    <div class="menu-sub menu-sub-dropdown w-225px w-lg-275px px-1 py-4">
+                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                            <span class="menu-link">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Districts Management   </span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <div class="menu-sub menu-sub-accordion">
+                                <div class="menu-item">
+                                    <a class="menu-link" href="{{route('districts.index')}}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Districts</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -199,7 +252,14 @@
                 <!--begin::Menu item-->
                 <div class="px-3 menu-item">
                     <div class="px-3 py-3 menu-content">
-                        <a class="px-4 btn btn-primary btn-sm" href="#">Generate Reports</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                                {{ __('Đăng Xuất') }}
+                            </a>
+                        </form>
                     </div>
                 </div>
                 <!--end::Menu item-->

@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Exports\EmployeeExport;
 use App\Imports\UsersImport;
 use Excel;
-use Image;
 use PDF;
+use Session;
 class userController extends Controller
 {
     /**
@@ -20,6 +21,10 @@ class userController extends Controller
     {
         $users = User::all() ;
         return view('dashboard.users.index',compact('users'));
+    }
+
+    public function permission(){
+        return view('dashboard.users.permission');
     }
 
     /**
@@ -54,7 +59,7 @@ class userController extends Controller
         $user->email = $request->input('email');
         $user->avatar = $path;
         $user->save();
-        
+
 
         return redirect()->route('user.index');
             // ->with('success','Product created successfully.');
@@ -131,11 +136,12 @@ class userController extends Controller
         return $pdf->download('user.pdf');
     }
 
-     public function import(Request $request) 
+     public function import(Request $request)
     {
         $file = $request->file('file');
         Excel::import(new UsersImport, $file);
-        
+
         return back()->withStatus('excel into');
     }
+
 }

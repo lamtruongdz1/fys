@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\YardController;
 use App\Http\Controllers\mainAdmin;
@@ -24,22 +25,29 @@ Route::get('/trangchu',[HomeController::class,'index']);
 Route::get('/404',[HomeController::class,'link404']);
 Route::post('/tim-kiem',[HomeController::class,'search']);
 // yard
+<<<<<<< HEAD
 Route::get('/san',[YardController::class,'index_client']);
 Route::get('/san/{id}',[YardController::class,'show_client']);
 Route::get('/san/search',[YardController::class,'search']);
+=======
+Route::get('/san',[YardController::class,'index']);
+Route::get('/san/{param}',[YardController::class,'show']);
+>>>>>>> e98e3fba7c9e89569fac7f38d06c7507a77a25b4
 
 
-Route::controller(mainAdmin::class)->group(function () {
-    Route::get('/admin', 'index');
-    Route::get('/dashboard', 'index')->name('dashboard');
+
+Route::group(['middleware' => ['permission:Quản lý bài viết']],function () {
+    Route::get('/admin', [mainAdmin::class,'index']);
+    Route::get('/dashboard',[mainAdmin::class,'index'])->name('dashboard');
+    Route::get('/export_excel', [userController::class, 'export_excel']);
+    Route::get('/export_csv', [userController::class, 'export_csv']);
+    Route::get('/export_pdf', [userController::class, 'download_pdf']);
+    Route::post('/import_excel', [userController::class, 'import']);
+    Route::get('users/permission', [userController::class, 'permission'])->name('users.permission');
+    Route::resource('users', userController::class);
+    Route::resource('yard', YardController::class);
+    Route::resource('districts', DistrictController::class);
 });
-
-Route::get('/export_excel', [userController::class, 'export_excel']);
-Route::get('/export_csv', [userController::class, 'export_csv']);
-Route::get('/export_pdf', [userController::class, 'download_pdf']);
-Route::post('/import_excel', [userController::class, 'import']);
-Route::resource('user', userController::class);
-Route::resource('yard', YardController::class);
 
 
 

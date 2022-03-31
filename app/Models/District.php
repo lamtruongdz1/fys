@@ -1,46 +1,33 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Str;
-class Yard extends Model
+
+class District extends Model
 {
     use HasFactory;
-    protected $table = 'yards';
-    protected $primaryKey = 'id';
-    public $timestamps = false;
-    protected $fillable =[
+    protected $table = 'districts';
+    protected $fillable = [
         'name',
-        'price',
-        'img',
-        'view',
-        'total_booking',
-        'address',
-        'description',
+        'slug',
     ];
+    public $timestamps = false;
     protected static function boot()
     {
         parent::boot();
-
-        static::created(function ($yard) {
-
-            $yard->slug = $yard->createSlug($yard->name);
-
-            $yard->save();
+        static::created(function ($district) {
+            $district->slug = $district->generateSlug($district->name);
+            $district->save();
         });
     }
-    private function createSlug($name)
+    private function generateSlug($name)
     {
         if (static::whereSlug($slug = Str::slug($name))->exists()) {
-
             $max = static::whereName($name)->latest('id')->skip(1)->value('slug');
-
             if (isset($max[-1]) && is_numeric($max[-1])) {
-
-                return preg_replace_callback('/(\d+)$/', function ($mathces) {
-
+                return preg_replace_callback('/(\d+)$/', function($mathces) {
                     return $mathces[1] + 1;
                 }, $max);
             }
@@ -48,6 +35,4 @@ class Yard extends Model
         }
         return $slug;
     }
-
-
 }
