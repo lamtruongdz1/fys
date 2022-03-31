@@ -5,13 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Yard;
-<<<<<<< HEAD
-use Illuminate\Support\Facades\DB;
-
-=======
 use App\Models\District;
 use Str;
->>>>>>> e98e3fba7c9e89569fac7f38d06c7507a77a25b4
+use Illuminate\Support\Facades\DB;
+
 class YardController extends Controller
 {
     public function __invoke()

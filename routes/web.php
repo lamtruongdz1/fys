@@ -25,14 +25,9 @@ Route::get('/trangchu',[HomeController::class,'index']);
 Route::get('/404',[HomeController::class,'link404']);
 Route::post('/tim-kiem',[HomeController::class,'search']);
 // yard
-<<<<<<< HEAD
 Route::get('/san',[YardController::class,'index_client']);
 Route::get('/san/{id}',[YardController::class,'show_client']);
 Route::get('/san/search',[YardController::class,'search']);
-=======
-Route::get('/san',[YardController::class,'index']);
-Route::get('/san/{param}',[YardController::class,'show']);
->>>>>>> e98e3fba7c9e89569fac7f38d06c7507a77a25b4
 
 
 

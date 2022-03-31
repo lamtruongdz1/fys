@@ -161,15 +161,10 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-<<<<<<< HEAD
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         
-=======
-
-
->>>>>>> e98e3fba7c9e89569fac7f38d06c7507a77a25b4
 
         /*
         * Package Service Providers...
@@ -185,13 +180,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
-<<<<<<< HEAD
         
-=======
-        Maatwebsite\Excel\ExcelServiceProvider::class,
-        Barryvdh\DomPDF\ServiceProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class,
->>>>>>> e98e3fba7c9e89569fac7f38d06c7507a77a25b4
 
     ],
 
