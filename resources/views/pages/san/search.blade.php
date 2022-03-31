@@ -4,7 +4,7 @@
   <div class="booking-form-options">
    <div class="booking-search-form">
        <div class="input-name form-group">
-         <form action="/san/search" method="GET">
+         <form action="">
          <input
            type="text"
            name="key"
