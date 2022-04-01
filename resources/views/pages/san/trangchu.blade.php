@@ -54,78 +54,17 @@
         </div>
         <div class="category-list swiper" data-aos="fade-left" data-aos-duration="1000">
             <div class="swiper-wrapper">
+                @foreach($districts as $district)
                 <div class="swiper-slide">
                     <div class="category-item">
-                        <img src="{{ asset('frontend/images/san1.jpg') }}" alt="" class="category-img">
+                        <a href="{{route('sanquan',['slug'=>$district->slug])}}"><img src="{{ asset('frontend/images/san1.jpg') }}" alt="" class="category-img"></a>
                         <div class="category-text">
-                            <h2 class="category-title">Quận 1</h2>
+                            <h2 class="category-title">{{$district->name}}</h2>
                             <p class="count">2 sân</p>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="category-item">
-                        <img src="{{ asset('frontend/images/san2.jpg') }}" alt="" class="category-img">
-                        <div class="category-text">
-                            <h2 class="category-title">Quận bình thạnh</h2>
-                            <p class="count">5 sân</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="category-item">
-                        <img src="{{ asset('frontend/images/san3.jpg') }}" alt="" class="category-img">
-                        <div class="category-text">
-                            <h2 class="category-title">Quận tân bình</h2>
-                            <p class="count">10 sân</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="category-item">
-                        <img src="{{ asset('frontend/images/san4.jpg') }}" alt="" class="category-img">
-                        <div class="category-text">
-                            <h2 class="category-title">Quận gò vấp</h2>
-                            <p class="count">2 sân</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="category-item">
-                        <img src="{{ asset('frontend/images/san5.jpg') }}" alt="" class="category-img">
-                        <div class="category-text">
-                            <h2 class="category-title">Quận 5</h2>
-                            <p class="count">2 sân</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="category-item">
-                        <img src="{{ asset('frontend/images/san6.jpg') }}" alt="" class="category-img">
-                        <div class="category-text">
-                            <h2 class="category-title">Quận 3</h2>
-                            <p class="count">2 sân</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="category-item">
-                        <img src="{{ asset('frontend/images/san7.jpg') }}" alt="" class="category-img">
-                        <div class="category-text">
-                            <h2 class="category-title">Quận 2</h2>
-                            <p class="count">2 sân</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="category-item">
-                        <img src="{{ asset('frontend/images/san8.jpg') }}" alt="" class="category-img">
-                        <div class="category-text">
-                            <h2 class="category-title">Quận 7</h2>
-                            <p class="count">2 sân</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="swiper-pagination"></div>
         </div>

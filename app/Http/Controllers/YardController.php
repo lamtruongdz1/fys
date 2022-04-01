@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Yard;
 use App\Models\District;
-use Str;
+use Psy\Util\Str;
 use Illuminate\Support\Facades\DB;
 
 class YardController extends Controller
@@ -63,7 +63,7 @@ class YardController extends Controller
 
         $yard = new Yard;
         $yard->name = $request->input('name');
-        $yard->slug =Str::slug('$yard->name');
+        $yard->slug = Str::slug('$yard->name');
         $yard->price = $request->input('price');
         $yard->address = $request->input('address');
         $yard->time_open = $request->input('timeopen');

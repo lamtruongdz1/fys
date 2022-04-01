@@ -12,8 +12,16 @@ class CreateYardsTable extends Migration
      */
     public function up()
     {
+         Schema::create('districts', function (Blueprint $table) {
+            $table->id();
+            $table->string('name',150)->unique();
+            $table->string('slug',150)->unique();
+            $table->timestamps();
+            // $table->foreign('id')->references('id_districts')->on('yards');
+        });
+
         Schema::create('yards', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name');
             $table->string('slug');
             $table->string('price');
@@ -24,7 +32,8 @@ class CreateYardsTable extends Migration
             $table->string('total_booking')->nullable();;
             $table->string('address');
             $table->text('description')->nullable();;
-            $table->string('id_districts')->nullable();;
+            $table->unsignedBigInteger('id_districts');
+            $table->foreign('id_districts')->references('id')->on('districts');;
             $table->boolean('status')->default('1');
             $table->timestamps();
         });

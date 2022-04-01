@@ -13,13 +13,13 @@ class District extends Migration
      */
     public function up()
     {
-        Schema::create('districts', function (Blueprint $table) {
-            $table->id();
-            $table->string('name',150)->unique();
-            $table->string('slug',150)->unique();
-            $table->timestamps();
-            // $table->foreignId('id')->references('id_districts')->on('yards');
-        });
+        // Schema::create('districts', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('name',150)->unique();
+        //     $table->string('slug',150)->unique();
+        //     $table->timestamps();
+        //     // $table->foreign('id')->references('id_districts')->on('yards');
+        // });
     }
 
     /**
